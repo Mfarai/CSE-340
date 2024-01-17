@@ -1,0 +1,22 @@
+@media only screen and (min-width: 35em) {
+/* General Stuff */
+body {width: 95%;margin-top: 20px;}
+button {position: absolute;top: 116px;left: 10px;width: 150px;}
+/*----*/
+
+/* Header Formatting */
+#navBar {font-size: 2rem;}
+/*----*/
+
+/* Main Formatting */
+/* TEST CODE FROM GROUP
+.action-container h2 {position: absolute;top: -28px;left: 10px;}
+.action-container p {position: absolute;top: 12px;left: 10px;}
+*/
+/*----*/
+
+/* Home Page Formatting */
+#upgradesGrid {display: flex;flex-direction: row-reverse;justify-content: space-evenly;}
+#upgradeList {width: 56%;}
+/*----*/
+}
