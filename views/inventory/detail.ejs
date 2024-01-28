@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+  <header>
+    <h1>{{vehicle-title}}</h1>
+  </header>
+  <main>
+    {{#if vehicles}}
+      <div class="vehicle-grid">
+        {{buildClassificationGrid vehicles}}
+      </div>
+    {{else}}
+      <p class="notice">Sorry, no matching vehicles could be found.</p>
+    {{/if}}
+  </main>
+  <footer>
+    <p>&copy; 2023 CSE Motors</p>
+  </footer>
+  <script src="/scripts/script.js" defer></script>
+</body>
+</html>

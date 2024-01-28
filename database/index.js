@@ -1,5 +1,5 @@
-const {Pool} = require("pg")
-require("dotenv").config()
+const {Pool} = require("pg");
+require("dotenv").config();
 /*******************************
  * Connection pool
  * SSL object needed for testing the local app
@@ -9,7 +9,7 @@ require("dotenv").config()
 let pool
 
 if (process.env.NODE_ENV == "development") {
-    pool = new Pool({
+    const pool = new Pool({
         connectionString: process.env.DATABASE_URL,
         ssl: {
             rejectUnauthorized: false,
