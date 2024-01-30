@@ -60,64 +60,51 @@ hr {
 /*----*/
 
 
-/* Header Formatting */
-#top-header { 
-    background-color:white; 
-    padding: .5rem 2%;
-    color: #4c96d7;
-}
-
-#top-header span { 
-    padding:0rem;
+/*** header section***/
+#top-header {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "  Roboto", sans-serif;
+  }
+  
+  #top-header a {
     text-decoration: none;
-    font-weight: 900;
-    text-align:start;
     color: black;
-}
+    padding-bottom: 10rem;
+  }
+  .siteName {
+    font-size: 3rem;
+    font-weight: bold;
+    padding: 1rem;
+  }
+  #tools {
+    font-size: 1.5rem;
+    padding-right: 2rem;
+  }
 
-#top-header div #tools { 
-    padding:0rem;
+/****Navigation Section ****/
+nav {
+    background-color: black;
+    color: white;
+    margin: 1rem;
+    font-size: 1.6rem;
+  }
+  nav li {
+    display: inline-block;
+    margin: 0 auto;
+    padding: 1%;
+  }
+  nav a {
     text-decoration: none;
-    font-weight: 900;
-    text-align:end;
-    color: black;
-}
-
-nav ul{
-    display:inline; 
-    padding: .5rem 1rem;
-    color:rgb(25, 18, 92); 
-    font-size: 50px;
-}
-
-nav ul {
-    display: flex; 
-    list-style-type: none; 
-    margin: auto; 
-    padding: .6rem 0; 
-    background-color: #666666; 
-    overflow: hidden;
-}
-
-nav ul li{ 
-    display: block;
-    padding: .5rem 1rem;
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-    font-size: .5em; 
+    color: #fff;
+  }
+  nav ul {
     text-align: center;
-}
-
-nav ul li :hover {
-    background-color: #02182b;
-    color: #ffffff;
-    border-radius: 20%;
-}
-
-nav ul li.active {
-    background-color: #4c96d7;
-}
-
+    padding-inline-start: 0;
+  }
+  
 #top-header #tools {
     margin: 0 auto; 
     display: inline-block; 
@@ -129,35 +116,6 @@ nav ul li.active {
     text-align: center;
     text-decoration: none;
 }
-
-#home-button {
-    padding: 4rem;
-    width: 100%;
-}
-/*----*/
-
-
-/* Footer Formatting */
-
-/*----*/
-
-
-/* Main Formatting */
-main {margin-left: 1rem; }
-
-/* TEST CODE FROM GROUP
-.action-container {position: relative;}
-.action-container h2 {position: absolute;top: -28px;left: 10px;}
-.action-container p {position: absolute;top: 12px;left: 10px;}
-.action-container h2 {color: #4c96d7;background-color: rgba(240, 240, 240, 0.8);}
-.action-container p {color: #4c96d7;background-color: rgba(240, 240, 240, 0.8);}
-.action-container img {max-width: 100%;}
-div.action {background-color: rgba(240, 240, 240, 0.8);}
-*.action p {margin: 0;}
-.action h2 {margin-bottom: 0;}
-*/
-/*----*/
-
 
 /* Home Page Formatting */
 .upgradeItem {
@@ -183,25 +141,39 @@ div.action {background-color: rgba(240, 240, 240, 0.8);}
     margin: auto;
 }
 
-#ownToday {
-    color:rgb(0, 0, 0); 
-    background-color: #4c96d7; 
-    border-width: 1px;
-}
-
-a {color:rgb(0, 0, 0); 
-    text-decoration: none;
-}
-
-button, .honoraryBtn {
-    background-color: #4c96d7; 
-    padding: 10px; color: black; 
-    text-align: center; 
-    max-width: 80%; 
-    text-decoration: none; 
-    margin: 0 auto; 
-    display: block;
-}
+.dmc-del-box {
+    position: relative;
+    color: rgb(17, 100, 184);
+  }
+  
+  .dmc-del {
+    position: absolute;
+    color: rgb(3, 113, 223);
+    left: 7%;
+    top: 330px;
+    padding-bottom: 1rem;
+    background-color: (255 255 255);
+    box-shadow: 5px 10px 10px whitesmoke;
+  }
+  
+  .dmc-del li {
+    list-style: none;
+    margin-left: -3.3rem;
+    font-size: 1rem;
+  }
+  
+  .dmc-del ul {
+    background-color: rgb((255 255 255));
+    margin-bottom: 2.5rem;
+  }
+  
+  .dmc-del span {
+    font-weight: bold;
+    color: black;
+    background-color: dodgerblue;
+    padding: 5px;
+    font-size: 1.8rem;
+  }
 
 #upgradeList {
     display: grid;
