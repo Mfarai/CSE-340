@@ -19,3 +19,8 @@ WHERE c.classification_name = 'Sport';
 UPDATE public.inventory
 SET inv_image = REPLACE(inv_image, '/images', '/vehicles/images'),
     inv_thumbnail = REPLACE(inv_thumbnail, '/images', '/vehicles/images');
+
+UPDATE public.inventory
+SET inv_image = REGEXP_REPLACE(inv_image, '/images\M','/images/vehicles','g');
+UPDATE public.inventory
+SET inv_thumbnail = REGEXP_REPLACE(inv_thumbnail, '/images\M','/images/vehicles', 'g');
