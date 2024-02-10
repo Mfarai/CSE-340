@@ -54,6 +54,23 @@ Util.buildClassificationGrid = (data) => {
   return grid;
 };
 
+/***
+ * build the drop down menu
+ */
+Util.buildClassificationDropdown = async function () {
+  let dropdown = '<select id="classification_id" name="classification_id" class="form-control" required>' +
+                 '<option value="">Select Classification</option>' +
+                 '';
+    let classifications = await invModel.getClassifications();
+    classifications.rows.forEach((classification) => {
+      dropdown += '<option value="' + classification.classification_id + '" selected="selected">'
+      dropdown += classification.classification_name
+      dropdown += "</option>"
+    });
+  dropdown += '</select>';
+  return dropdown;
+}
+
 /****************************
  * Middleware for handling errors
  * wrap in other functions for error handling

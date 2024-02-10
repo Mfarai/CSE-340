@@ -1,0 +1,62 @@
+<% if (title) { %>
+  <h1><%= title %></h1>
+  <% } else {
+    res.redirect('/')
+  } %>
+
+  <%- messages() %>
+
+<br><br><br>
+  <form action="./add-inventory" method="post">
+  <br><br><br><br><br><br>
+  <%- dropdown %>
+<div class="form-group">
+  <label for="inv_year">Year:</label>
+  <input type="number" id="inv_year" name="vehicle_year" class="form-control" value="<%= locals.inv_year %>" required>
+</div>
+<div class="form-group">
+  <label for="inv_make">Make:</label>
+  <input type="text" id="inv_make" name="inv_make" class="form-control" value="<%= locals.inv_make %>" required>
+</div>
+<div class="form-group">
+  <label for="inv_model">Model:</label>
+  <input type="text" id="inv_model" name="inv_model" class="form-control" value="<%= locals.inv_model %>" required>
+</div>
+<div class="form-group">
+  <label for="inv_description">Description:</label>
+  <textarea id="inv_description" name="inv_description" class="form-control" required><%= locals.inv_description || '' %></textarea>
+</div>
+<div class="form-group">
+  <label for="inv_image">Image Path:</label>
+  <input type="text" id="inv_image" name="inv_image" class="form-control" value="<%= locals.inv_image %>" required>
+</div>
+<div class="form-group">
+  <label for="inv_thumbnail">Thumbnail Path:</label>
+  <input type="text" id="inv_thumbnail" name="inv_thumbnail" class="form-control" value="<%= locals.inv_thumbnail %>" required>
+</div>
+<div class="form-group">
+  <label for="inv_price">price :</label>
+  <input type="number" id="inv_price" name="inv_price" class="form-control" value="<%= locals.inv_price %>" required>
+</div>
+<div class="form-group">
+  <label for="inv_color">color :</label>
+  <input type="color" id="inv_color" name="inv_color" class="form-control" value="<%= locals.inv_color %>" required>
+</div>
+<div class="form-group">
+  <label for="inv_miles">miles :</label>
+  <input type="text" id="inv_miles" name="inv_miles" class="form-control" value="<%= locals.inv_miles %>" required>
+</div>
+<button type="submit" class="btn btn-primary">Add Inventory</button>
+</form>
+
+<script>
+// Client-side validation
+const form = document.querySelector('form')
+form.addEventListener('submit', (event) => {
+  if (!form.checkValidity()) {
+    event.preventDefault()
+    event.stopPropagation()
+  }
+  form.classList.add('was-validated')
+})
+</script>

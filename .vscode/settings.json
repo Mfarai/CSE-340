@@ -3,6 +3,7 @@
         "delorean",
         "firstname",
         "getclassificationsbyid",
-        "lastname"
+        "lastname",
+        "resave"
     ]
 }

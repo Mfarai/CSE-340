@@ -224,7 +224,7 @@ nav {
   }
   
   .vehicle-detail img {
-    max-width: 100%;
+    max-width: auto;
     height: auto;
   }
   
@@ -249,3 +249,39 @@ nav {
       flex-basis: 100%;
     }
   }
+
+/***** css for the add classification form***/
+form {
+  margin-bottom: 20px;
+}
+
+label {
+  display: inline-block;
+  width: 200px;
+  text-align: right;
+  margin-right: 10px;
+}
+
+input[type="text"] {
+  width: 300px;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button[type="submit"] {
+  margin: 0;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #2a449c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}

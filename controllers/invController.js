@@ -36,4 +36,81 @@ invCont.getInventoryItems = async function (req, res, next) {
     next(error)
   }
 }
+
+invCont.displayInventoryManagementView = async function (req, res, next) {
+  try {
+    let nav = await utilities.getNav()
+    res.render("inventory/management", {
+      title: "Manage Inventory",
+      nav,
+    })
+  } catch (error) {
+    next(error)
+  }
+}
+
+invCont.buildAddClassification = async function (req, res, next) {
+  try {
+    let nav = await utilities.getNav()
+    res.render("inventory/add-classification", {
+      title: "Add Classification",
+      nav,
+    })
+  } catch (error) {
+    next(error)
+  }
+}
+
+invCont.addClassification = async function (req, res, next) {
+  const { classification_name } = req.body;
+  try {
+    const results = await invModel.addNewClassification(classification_name);
+    const nav = await utilities.getNav(); // corrected the model name
+    if (results) {
+      req.flash("notice", "Classification added successfully." );
+      res.render("inventory/management", { nav, title: "Add Classification",});
+    } else {
+      req.flash("error", { text: "Failed to add classification." });
+      res.render("inventory/add-classification", { nav, title: "Add Classification", });
+    }
+  } catch (error) {
+    next(error);
+  }
+}
+
+invCont.addInventoryGet = async function (req, res, next) {
+  try {
+    let dropdown = await utilities.buildClassificationDropdown();
+    let nav = await utilities.getNav();
+    res.render("inventory/add-inventory", {
+      title: "Add Inventory",
+      nav,
+      dropdown
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
+invCont.addInventoryPost = async function (req, res, next) {
+  const { inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id} = req.body;
+  try {
+    const results = await invModel.addNewInventory(inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id);
+    const dropdown = await utilities.buildClassificationDropdown();
+    const nav = await utilities.getNav(); // corrected the model name
+    if (results) {
+      req.flash("notice", "Inventory added successfully." );
+      res.redirect("/inv/");
+    } else {
+      req.flash("error", "Failed to add inventory." );
+      res.render("inventory/add-inventory", { nav, dropdown, title: "Add Inventory", });
+    }
+  } catch (error) {
+    next(error);
+  }
+}
+
+
 module.exports = invCont
+
+
