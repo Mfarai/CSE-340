@@ -18,12 +18,11 @@ hr {
 
 body {
     font-family: 'Titillium Web', sans-serif; 
-    margin:0 auto; 
+    margin: 5% auto;
     background-color:white; 
     border-style: solid; 
     border-color: #195181; 
     border-width: 5px; 
-    margin:5%;
     max-width: 80%; 
 }
 
@@ -79,7 +78,7 @@ hr {
     font-weight: bold;
     padding: 1rem;
   }
-  #tools {
+  #tools a {
     font-size: 1.5rem;
     padding-right: 2rem;
   }
@@ -131,6 +130,7 @@ nav {
 #upgradesGrid {
     display:grid; 
     grid-template-columns: 1fr ;
+    left: 15%;
 }
 
 #upgradeList {
@@ -149,8 +149,8 @@ nav {
   .dmc-del {
     position: absolute;
     color: rgb(3, 113, 223);
-    left: 7%;
-    top: 330px;
+    left: 11%;
+
     padding-bottom: 1rem;
     background-color: (255 255 255);
     box-shadow: 5px 10px 10px whitesmoke;
@@ -251,37 +251,57 @@ nav {
   }
 
 /***** css for the add classification form***/
-form {
-  margin-bottom: 20px;
-}
-
-label {
-  display: inline-block;
-  width: 200px;
-  text-align: right;
-  margin-right: 10px;
-}
-
-input[type="text"] {
-  width: 300px;
-  padding: 5px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-button[type="submit"] {
-  margin: 0;
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #2a449c;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
 
 button[type="submit"]:hover {
   background-color: #45a049;
+}
+
+/**** account login***/
+form {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  margin: 0 auto;
+  width: fit-content;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input{
+  display: block;
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+  
+button{
+  margin: 0 auto;
+  width: fit-content;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 150px;
+  left: 20%;
+}
+
+a{
+  text-align: center;
+  color: #123341;
+  text-decoration: none;
 }

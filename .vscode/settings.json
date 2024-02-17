@@ -4,6 +4,8 @@
         "firstname",
         "getclassificationsbyid",
         "lastname",
+        "loggedin",
+        "registation",
         "resave"
     ]
 }

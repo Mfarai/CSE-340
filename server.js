@@ -13,9 +13,11 @@ const utilities = require("./utilities")
 const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
+const accountRoute = require("./routes/accountRoute")
 const session = require("express-session")
 const pool = require('./database/')
 const bodyParser = require('body-parser');
+const cookieParser = require("cookie-parser")
 
 
 /* ***********************
@@ -39,9 +41,12 @@ app.use(function(req, res, next){
   next()
 })
 
+
 //Body parser for parsing application/x-www-form-urlencoded
+app.use(cookieParser())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(utilities.checkJWTToken)
 
 /* ***********************
  * view engine and templates
@@ -61,6 +66,7 @@ app.use(static)
 app.get("/", utilities.handleErrors(baseController.buildHome))
 
 app.use("/inv", inventoryRoute)
+app.use('/account', accountRoute)
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {

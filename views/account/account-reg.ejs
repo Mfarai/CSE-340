@@ -1,0 +1,31 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+<% } else { %>
+    <% res.redirect('/') %>
+<% } %>
+
+<%- messages() %>
+
+<form action="/account/account-reg" method="post">
+    <label for="fname">First Name:</label><br>
+    <input type="text" id="account_firstname" name="account_firstname" required><br>
+    <label for="lname">Last Name:</label><br>
+    <input type="text" id="account_lastname" name="account_lastname" required><br>
+    <label for="email">Email:</label><br>
+    <input type="email" id="account_email" name="account_email" required><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="account_password" name="account_password" required><br>
+    <span>Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character</span>
+    <button type="submit" class="btn btn-primary">submit</button>
+</form>
+<script>
+// Client-side validation
+const form = document.querySelector('form')
+form.addEventListener('submit', (event) => {
+    if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+    }
+    form.classList.add('was-validated')
+})
+</script>
