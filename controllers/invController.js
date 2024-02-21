@@ -126,12 +126,13 @@ invCont.searchInventoryPost = async function (req, res, next ){
   const { searchTerm } = req.body;
   try {
     const inventoryItems = await invModel.searchInventory(searchTerm);
+    const grid = await utilities.buildClassificationGrid([inventoryItems])
     let nav = await utilities.getNav();
     req.flash("notice", "search successfully and the results." );
     res.render("inventory/search-results", {
       title: `Search Results for "${searchTerm}"`,
       nav,
-      inventoryItems,
+      grid,
     });
   } catch (error) {
     next(error);
