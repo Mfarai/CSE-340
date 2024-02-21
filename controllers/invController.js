@@ -110,6 +110,34 @@ invCont.addInventoryPost = async function (req, res, next) {
   }
 }
 
+invCont.searchInventoryGet = async function (req, res, next) {
+  try {
+    let nav = await utilities.getNav();
+    res.render("inventory/search-inventory", {
+      title: "search inventory",
+      nav,
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
+invCont.searchInventoryPost = async function (req, res, next ){
+  const { searchTerm } = req.body;
+  try {
+    const inventoryItems = await invModel.searchInventory(searchTerm);
+    let nav = await utilities.getNav();
+    req.flash("notice", "search successfully and the results." );
+    res.render("inventory/search-results", {
+      title: `Search Results for "${searchTerm}"`,
+      nav,
+      inventoryItems,
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
 
 module.exports = invCont
 

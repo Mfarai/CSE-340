@@ -1,0 +1,14 @@
+<% if (title) { %>
+
+    <h1><%= title %></h1>
+    <% } else { %>
+    
+    <!-- Render an error page display a message instead of redirecting --> <h1>Error: No title provided</h1>
+    <% } %>
+    
+    <%- messages ? messages() : '' %> <!-- Check if messages function exists before calling it -->
+    
+    <form action="/inv/search-inventory" method="post"> 
+        <input type="text" name="searchTerm" placeholder="Search inventory..."> 
+        <button type="submit">Search</button> 
+    </form>

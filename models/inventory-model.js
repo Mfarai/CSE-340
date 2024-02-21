@@ -55,5 +55,18 @@ async function addNewInventory(inv_make, inv_model, inv_year, inv_description, i
   }
 }
 
+async function searchInventory(searchTerm) {
+  try {
+    const data = await pool.query(
+      `SELECT * FROM public.inventory 
+      WHERE inv_make ILIKE $1 OR inv_model ILIKE $1 OR inv_description ILIKE $1`,
+      [`%${searchTerm}%`]
+    );
+    return data.rows
+  } catch (error) {
+    console.error("searchInventory error\n " + error);
+    return null;
+  }
+}
 
-module.exports = {getClassifications, getInventoryByClassificationId, addNewClassification, addNewInventory};
+module.exports = {getClassifications, getInventoryByClassificationId, addNewClassification, addNewInventory, searchInventory};

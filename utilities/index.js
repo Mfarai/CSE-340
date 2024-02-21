@@ -80,6 +80,20 @@ Util.buildClassificationDropdown = async function () {
  *****/
 Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)) .catch(next)
 
+
+
+/* ****************************************
+ *  Check Login
+ * ************************************ */
+ Util.checkLogin = (req, res, next) => {
+  if (res.locals.loggedin) {
+    next()
+  } else {
+    req.flash("notice", "Please log in.")
+    return res.redirect("/account/login")
+  }
+}
+
 /* ****************************************
 * Middleware to check token validity
 **************************************** */
@@ -90,9 +104,9 @@ Util.checkJWTToken = (req, res, next) => {
    process.env.ACCESS_TOKEN_SECRET,
    function (err, accountData) {
     if (err) {
-     req.flash("Please log in")
-     res.clearCookie("jwt")
-     return res.redirect("/account/account-login")
+      req.flash("Please log in")
+      res.clearCookie("jwt")
+      return res.redirect("/account/account-login")
     }
     res.locals.accountData = accountData
     res.locals.loggedin = 1
@@ -103,11 +117,16 @@ Util.checkJWTToken = (req, res, next) => {
  }
 }
 
-/* ****************************************
- *  Check Login
- * ************************************ */
- Util.checkLogin = (req, res, next) => {
+Util.checkAccountType = (req, res, next) => {
   if (res.locals.loggedin) {
+    if (
+      res.locals.accountData.account_type == "Admin" || 
+      res.locals.accountData.account_type == "Employee"
+    ) {
+      res.redirect("/account/update")
+    } else {
+      res.redirect("/")
+    }
     next()
   } else {
     req.flash("notice", "Please log in.")

@@ -1,4 +1,3 @@
-const bcrypt = require("bcrypt");
 const pool = require("../database/index");
 
 async function registerAccount(
@@ -8,14 +7,7 @@ async function registerAccount(
   account_password
 ) {
   // Validate input
-  if (!account_firstname || !account_lastname || !account_email || !account_password) {
-    throw new Error("All fields are required.");
-  }
-
   try {
-    // Hash the password
-    const hashedPassword = await bcrypt.hash(account_password, 10);
-
     // Insert the new account into the database
     const sql =
       "INSERT INTO public.account (account_firstname, account_lastname, account_email, account_password, account_type) VALUES ($1, $2, $3, $4, $5) RETURNING *";
@@ -23,7 +15,7 @@ async function registerAccount(
       account_firstname,
       account_lastname,
       account_email,
-      hashedPassword,
+      account_password,
       "Client",
     ];
     return await pool.query(sql, values);
@@ -52,4 +44,17 @@ async function getAccountByEmail(account_email) {
   }
 }
 
-module.exports = { registerAccount, getAccountByEmail };
+/* **********************
+ *   Check for existing email
+ * ********************* */
+async function checkExistingEmail(account_email){
+  try {
+    const sql = "SELECT * FROM account WHERE account_email = $1"
+    const email = await pool.query(sql, [account_email])
+    return email.rowCount
+  } catch (error) {
+    return error.message
+  }
+}
+
+module.exports = { registerAccount, getAccountByEmail, checkExistingEmail};

@@ -16,6 +16,11 @@ router.get("/add-inventory", invController.addInventoryGet);
 
 router.post("/add-inventory", invController.addInventoryPost);
 
+// search inv view
+router.get("/search-inventory", invController.searchInventoryGet);
+
+router.post("/search-inventory", invController.searchInventoryPost);
+
 // Route to build inventory by classification view
 router.get("/type/:classificationId", invController.buildByClassificationId);
 
